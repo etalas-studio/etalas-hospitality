@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useLanguage } from '../contexts';
 import { Code2, Database, Globe, Smartphone, Cloud, Cpu, Lock, Zap } from 'lucide-react';
 
@@ -15,7 +15,7 @@ const TECH_ITEMS = [
   { name: 'Node.js', icon: <Code2 size={24} /> }
 ];
 
-export const TechStack: React.FC = () => {
+export const TechStack: React.FC = memo(() => {
   const { t } = useLanguage();
 
   return (
@@ -28,7 +28,7 @@ export const TechStack: React.FC = () => {
       
       <div className="relative flex overflow-hidden group">
         {/* First list */}
-        <div className="flex shrink-0 animate-marquee whitespace-nowrap gap-16 px-8">
+        <div className="flex shrink-0 animate-marquee whitespace-nowrap gap-16 px-8 will-change-transform">
           {[...TECH_ITEMS, ...TECH_ITEMS].map((item, index) => (
             <div 
                 key={`list1-${index}`} 
@@ -41,7 +41,7 @@ export const TechStack: React.FC = () => {
         </div>
 
         {/* Second identical list for seamless scrolling */}
-        <div className="flex shrink-0 animate-marquee whitespace-nowrap gap-16 px-8">
+        <div className="flex shrink-0 animate-marquee whitespace-nowrap gap-16 px-8 will-change-transform">
           {[...TECH_ITEMS, ...TECH_ITEMS].map((item, index) => (
             <div 
                 key={`list2-${index}`} 
@@ -59,4 +59,6 @@ export const TechStack: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+TechStack.displayName = 'TechStack';

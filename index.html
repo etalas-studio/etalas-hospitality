@@ -10,6 +10,11 @@
     <meta name="author" content="etalas">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.etalas.com/" />
+    
+    <!-- Preconnect to image CDN for faster loading -->
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -27,29 +32,46 @@
 
     <!-- JSON-LD for SEO -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "etalas",
-      "url": "https://www.etalas.com",
-      "logo": "https://www.etalas.com/logo.png",
-      "sameAs": [
-        "https://www.instagram.com/etalas.id/",
-        "https://linkedin.com/company/etalas"
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+62-811-297-339",
-        "contactType": "sales",
-        "areaServed": ["US", "ID"],
-        "availableLanguage": ["English", "Indonesian"]
-      }
-    }
+    [
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "etalas",
+          "url": "https://www.etalas.com",
+          "logo": "https://www.etalas.com/logo.png",
+          "sameAs": [
+            "https://www.instagram.com/etalas.id/",
+            "https://linkedin.com/company/etalas"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+62-811-297-339",
+            "contactType": "sales",
+            "areaServed": ["US", "ID"],
+            "availableLanguage": ["English", "Indonesian"]
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "MVP Development",
+          "provider": {
+            "@type": "Organization",
+            "name": "etalas"
+          },
+          "description": "Rapid MVP development using AI-powered tools to launch your product in weeks.",
+          "areaServed": "Worldwide"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "etalas - AI Product Studio",
+            "url": "https://www.etalas.com/"
+        }
+    ]
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
@@ -77,6 +99,7 @@
             animation: {
               'marquee': 'marquee 60s linear infinite', /* Slowed down from 25s to 60s */
               'blob': 'blob 7s infinite',
+              'shimmer': 'shimmer 3s linear infinite',
             },
             keyframes: {
               marquee: {
@@ -88,7 +111,14 @@
                 '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
                 '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
                 '100%': { transform: 'translate(0px, 0px) scale(1)' },
+              },
+              shimmer: {
+                '0%': { backgroundPosition: '0% 50%' },
+                '100%': { backgroundPosition: '200% 50%' },
               }
+            },
+            backgroundSize: {
+              '200%': '200% auto',
             }
           }
         }

@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from './Button';
 import { Instagram, Linkedin, Twitter, ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '../contexts';
@@ -7,6 +7,13 @@ import { useLanguage } from '../contexts';
 export const Footer: React.FC = () => {
   const { t } = useLanguage();
   const whatsappLink = "https://wa.me/62811297339?text=Hi%20etalas,%20I'd%20like%20to%20schedule%20a%20call.";
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end end"]
+  });
+
+  const x = useTransform(scrollYProgress, [0, 1], [-100, 0]);
 
   return (
     <>
@@ -20,7 +27,7 @@ export const Footer: React.FC = () => {
         </div>
       </section>
 
-      <footer className="bg-[#121212] dark:bg-black text-[#FDFBF7] pt-24 pb-12 px-6 md:px-12 rounded-t-[3rem] relative overflow-hidden">
+      <footer ref={containerRef} className="bg-[#121212] dark:bg-black text-[#FDFBF7] pt-24 pb-12 px-6 md:px-12 rounded-t-[3rem] relative overflow-hidden">
         {/* Subtle color glow at the bottom */}
         <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-brand-900/20 to-transparent pointer-events-none"></div>
 
@@ -105,9 +112,12 @@ export const Footer: React.FC = () => {
           
           <div className="mt-24">
              <div className="w-full overflow-hidden">
-               <div className="text-[12rem] md:text-[18rem] font-bold leading-none text-white/5 opacity-50 select-none whitespace-nowrap hover:text-brand-900/20 transition-colors duration-1000 cursor-default">
+               <motion.div 
+                 style={{ x }}
+                 className="text-[12rem] md:text-[18rem] font-bold leading-none text-white/5 opacity-50 select-none whitespace-nowrap hover:text-brand-900/20 transition-colors duration-1000 cursor-default"
+               >
                  etalas
-               </div>
+               </motion.div>
              </div>
           </div>
         </div>

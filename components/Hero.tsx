@@ -25,7 +25,7 @@ export const Hero: React.FC = () => {
     "Musicology", 
     "Skedul",
     "Pont",
-    "Prodago",
+    "Prodago", 
     "Metion"
   ];
 
@@ -74,7 +74,7 @@ export const Hero: React.FC = () => {
               </motion.span>
             ))}
             <motion.span 
-              className="inline-block italic bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-purple-600 pr-4 pb-2"
+              className="inline-block italic bg-clip-text text-transparent bg-gradient-to-r from-brand-600 via-purple-500 to-brand-600 bg-[length:200%_auto] animate-shimmer pr-4 pb-2"
               variants={{
                 hidden: { opacity: 0, scale: 0.8 },
                 visible: { opacity: 1, scale: 1, transition: { duration: 0.8 } }
@@ -136,11 +136,6 @@ export const Hero: React.FC = () => {
              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">{t('hero.trustedBy')}</p>
           </div>
           
-          {/* 
-              FIX: Added 'gap-32' to the parent flex container. 
-              This ensures the gap BETWEEN the two looping lists matches the gap WITHIN the lists.
-              Also added 'will-change-transform' for performance.
-          */}
           <div className="flex gap-32 relative overflow-hidden group w-full">
              <div className="flex shrink-0 animate-marquee whitespace-nowrap gap-32 items-center will-change-transform">
                  {trustedClients.map((client, i) => (

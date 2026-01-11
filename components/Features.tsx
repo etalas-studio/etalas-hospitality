@@ -1,7 +1,54 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts';
 import { Unlock } from 'lucide-react';
+
+// Reusable Spotlight Card Wrapper
+const SpotlightCard = ({ children, className = "", delay = 0 }: { children?: React.ReactNode, className?: string, delay?: number }) => {
+    const divRef = useRef<HTMLDivElement>(null);
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [opacity, setOpacity] = useState(0);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!divRef.current) return;
+        const div = divRef.current;
+        const rect = div.getBoundingClientRect();
+        setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    };
+
+    const handleFocus = () => {
+        setOpacity(1);
+    };
+
+    const handleBlur = () => {
+        setOpacity(0);
+    };
+
+    return (
+        <motion.div
+            ref={divRef}
+            onMouseMove={handleMouseMove}
+            onMouseEnter={handleFocus}
+            onMouseLeave={handleBlur}
+            className={`${className} relative overflow-hidden`}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.01 }}
+            transition={{ duration: 0.5, delay }}
+        >
+            <div
+                className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 z-10"
+                style={{
+                    opacity,
+                    background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(255,255,255,0.06), transparent 40%)`,
+                }}
+            />
+            {children}
+        </motion.div>
+    );
+};
+
 
 export const Features: React.FC = () => {
   const { t } = useLanguage();
@@ -31,13 +78,8 @@ export const Features: React.FC = () => {
            {/* Scrollable Right Column */}
            <div className="lg:col-span-8 flex flex-col gap-4">
               {/* Design Card - Extra Compact */}
-              <motion.div 
-                className="p-5 rounded-2xl bg-[#EBE9E4] dark:bg-[#1a1a1c] flex flex-col justify-between relative overflow-hidden group border border-transparent dark:border-zinc-800"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.01 }}
-                transition={{ duration: 0.5 }}
+              <SpotlightCard 
+                className="p-5 rounded-2xl bg-[#EBE9E4] dark:bg-[#1a1a1c] flex flex-col justify-between group border border-transparent dark:border-zinc-800"
               >
                 <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-white/40 to-transparent dark:from-white/5 rounded-full -mr-16 -mt-16 transition-transform duration-700 group-hover:scale-150" />
                 
@@ -51,16 +93,11 @@ export const Features: React.FC = () => {
                 <div className="mt-4 opacity-10 dark:opacity-5 text-[32px] leading-none font-serif italic absolute bottom-0 right-4 text-brand-900 dark:text-white pointer-events-none select-none">
                   Design
                 </div>
-              </motion.div>
+              </SpotlightCard>
 
               {/* Operate Card - Extra Compact */}
-              <motion.div 
-                className="p-5 rounded-2xl bg-[#121212] dark:bg-black text-white flex flex-col justify-between relative overflow-hidden group border border-transparent dark:border-zinc-800"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.01 }}
-                transition={{ duration: 0.5 }}
+              <SpotlightCard 
+                className="p-5 rounded-2xl bg-[#121212] dark:bg-black text-white flex flex-col justify-between group border border-transparent dark:border-zinc-800"
               >
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-500 to-purple-500" />
                 
@@ -108,7 +145,7 @@ export const Features: React.FC = () => {
                         </div>
                     </div>
                 </div>
-              </motion.div>
+              </SpotlightCard>
 
               {/* Negative List - Compact */}
               <motion.div 

@@ -1,20 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense, lazy } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { Process } from './components/Process';
-import { Features } from './components/Features';
-import { Pricing } from './components/Pricing';
-import { FAQ } from './components/FAQ';
-import { Footer } from './components/Footer';
-import { Services } from './components/Services';
-import { TechStack } from './components/TechStack';
-import { Blog } from './components/Blog';
-import { Team } from './components/Team';
 import { Preloader } from './components/Preloader';
+import { CustomCursor } from './components/CustomCursor';
+import { BackgroundBlobs } from './components/BackgroundBlobs';
 import { LanguageProvider, ThemeProvider } from './contexts';
 import { AnimatePresence, motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 import Lenis from 'lenis';
+
+// Lazy load components below the fold for better initial load performance
+const Process = lazy(() => import('./components/Process').then(module => ({ default: module.Process })));
+const Features = lazy(() => import('./components/Features').then(module => ({ default: module.Features })));
+const Pricing = lazy(() => import('./components/Pricing').then(module => ({ default: module.Pricing })));
+const FAQ = lazy(() => import('./components/FAQ').then(module => ({ default: module.FAQ })));
+const Footer = lazy(() => import('./components/Footer').then(module => ({ default: module.Footer })));
+const Services = lazy(() => import('./components/Services').then(module => ({ default: module.Services })));
+const TechStack = lazy(() => import('./components/TechStack').then(module => ({ default: module.TechStack })));
+const Work = lazy(() => import('./components/Work').then(module => ({ default: module.Work })));
+const Blog = lazy(() => import('./components/Blog').then(module => ({ default: module.Blog })));
+const Team = lazy(() => import('./components/Team').then(module => ({ default: module.Team })));
 
 function AppContent() {
   const [loading, setLoading] = useState(true);
@@ -70,6 +75,15 @@ function AppContent() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // SEO: Dynamic Title Update
+  useEffect(() => {
+    if (currentView === 'blog') {
+      document.title = 'Insights | etalas - AI Product Studio';
+    } else {
+      document.title = 'etalas | Digital Software House - Build Your MVP';
+    }
+  }, [currentView]);
+
   // Smooth scroll behavior for anchor links
   useEffect(() => {
     const handleAnchorClick = (e: MouseEvent) => {
@@ -94,28 +108,15 @@ function AppContent() {
 
   return (
     <>
+      <CustomCursor />
       <AnimatePresence mode="wait">
         {loading && <Preloader onComplete={() => setLoading(false)} />}
       </AnimatePresence>
 
       <div className={`bg-white dark:bg-zinc-950 min-h-screen text-etalas-text dark:text-gray-100 font-sans selection:bg-black selection:text-white transition-colors duration-300 relative ${loading ? 'h-screen overflow-hidden' : ''}`}>
         
-        {/* Dynamic Background (White, Black, Purple combo) */}
-        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-             {/* Base Noise */}
-            <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay z-10" 
-                 style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}>
-            </div>
-            
-            {/* Purple Blob Top Right */}
-            <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-[100px] animate-blob dark:bg-purple-900/20 mix-blend-multiply dark:mix-blend-screen" />
-            
-            {/* Black/Gray Blob Bottom Left (Contrast) */}
-            <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-gray-900/5 rounded-full blur-[80px] animate-blob animation-delay-2000 dark:bg-gray-800/20" />
-            
-            {/* Center light accent */}
-            <div className="absolute top-[40%] left-[40%] w-[400px] h-[400px] bg-brand-500/5 rounded-full blur-[100px]" />
-        </div>
+        {/* Extracted Background Blobs for Performance Isolation */}
+        <BackgroundBlobs />
 
         <div className="relative z-10">
             <Header currentView={currentView} onNavigate={setCurrentView} />
@@ -141,16 +142,18 @@ function AppContent() {
                        ))}
                     </div>
                   </div>
-
-                  <Services />
-                  <TechStack />
-                  <Process />
-                  <Features />
-                  {/* Testimonials removed as requested */}
-                  <Pricing />
-                  {/* Resources removed as requested */}
-                  <Team />
-                  <FAQ />
+                  
+                  {/* Lazy Loaded Sections with Suspense Fallback */}
+                  <Suspense fallback={<div className="min-h-[50vh]" />}>
+                    <Work />
+                    <Services />
+                    <TechStack />
+                    <Process />
+                    <Features />
+                    <Pricing />
+                    <Team />
+                    <FAQ />
+                  </Suspense>
                 </>
               ) : (
                 <motion.div
@@ -158,11 +161,15 @@ function AppContent() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                 >
-                    <Blog />
+                    <Suspense fallback={<div className="h-screen" />}>
+                        <Blog />
+                    </Suspense>
                 </motion.div>
               )}
             </main>
-            <Footer />
+            <Suspense fallback={null}>
+                <Footer />
+            </Suspense>
         </div>
 
         {/* Floating CTA */}

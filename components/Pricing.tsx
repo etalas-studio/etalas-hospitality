@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, ArrowRight, ShieldCheck, Star } from 'lucide-react';
 import { Button } from './Button';
@@ -28,6 +28,55 @@ const TOOLTIP_DATA: Record<string, string> = {
   "Database + Integrasi API": "Arsitektur database aman dan konektivitas API yang kuat.",
   "Otentikasi pengguna & onboarding": "Sistem login aman dan alur masuk pengguna yang lancar.",
   "Komponen desain produk": "Komponen UI/UX berkualitas tinggi dan konsisten."
+};
+
+const PricingCard = ({ item, t, whatsappLink, children }: any) => {
+    const divRef = useRef<HTMLDivElement>(null);
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [opacity, setOpacity] = useState(0);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!divRef.current) return;
+        const div = divRef.current;
+        const rect = div.getBoundingClientRect();
+        setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    };
+
+    const handleFocus = () => {
+        setOpacity(1);
+    };
+
+    const handleBlur = () => {
+        setOpacity(0);
+    };
+
+    return (
+        <motion.div
+            ref={divRef}
+            onMouseMove={handleMouseMove}
+            onMouseEnter={handleFocus}
+            onMouseLeave={handleBlur}
+            className={`relative p-8 md:p-12 rounded-3xl flex flex-col md:flex-row gap-8 justify-between border transition-all duration-300 bg-[#111111] text-white overflow-hidden ${
+                  item.highlight 
+                    ? 'border-zinc-700 shadow-2xl shadow-brand-900/20' 
+                    : 'border-zinc-800 hover:border-zinc-700'
+            }`}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            whileHover={{ scale: 1.01 }}
+            transition={{ duration: 0.3 }}
+        >
+             <div
+                className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 z-10"
+                style={{
+                    opacity,
+                    background: `radial-gradient(800px circle at ${position.x}px ${position.y}px, rgba(255,255,255,0.06), transparent 40%)`,
+                }}
+            />
+            {children}
+        </motion.div>
+    );
 };
 
 export const Pricing: React.FC = () => {
@@ -89,20 +138,8 @@ export const Pricing: React.FC = () => {
           {/* Scrollable Right Column */}
           <div className="lg:col-span-8 flex flex-col gap-8">
             {pricingItems.map((item, index) => (
-              <motion.div 
-                key={index}
-                className={`p-8 md:p-12 rounded-3xl flex flex-col md:flex-row gap-8 justify-between border transition-all duration-300 bg-[#111111] text-white ${
-                  item.highlight 
-                    ? 'border-zinc-700 shadow-2xl shadow-brand-900/20' 
-                    : 'border-zinc-800 hover:border-zinc-700'
-                }`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                whileHover={{ scale: 1.01 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="flex-1">
+              <PricingCard key={index} item={item} t={t} whatsappLink={whatsappLink}>
+                <div className="flex-1 relative z-20">
                   <div className="flex justify-between items-start mb-6">
                       <span className={`text-sm font-semibold px-4 py-2 rounded-full bg-white/10 text-white`}>
                           {item.title}
@@ -141,7 +178,7 @@ export const Pricing: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex-1 md:border-l md:border-zinc-800 md:pl-8 flex flex-col justify-between">
+                <div className="flex-1 md:border-l md:border-zinc-800 md:pl-8 flex flex-col justify-between relative z-20">
                    <ul className="space-y-4 mb-10">
                     {item.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-3">
@@ -175,7 +212,7 @@ export const Pricing: React.FC = () => {
                       </div>
                   </div>
                 </div>
-              </motion.div>
+              </PricingCard>
             ))}
           </div>
         </div>

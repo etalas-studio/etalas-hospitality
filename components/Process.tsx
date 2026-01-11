@@ -42,18 +42,21 @@ export const Process: React.FC = () => {
           </div>
 
           {/* Scrollable Right Column */}
-          <div className="lg:col-span-8 flex flex-col gap-12 md:gap-20">
+          <div className="lg:col-span-8 flex flex-col gap-12 md:gap-20 relative">
+            {/* Connecting Line */}
+            <div className="absolute left-[39px] top-12 bottom-20 w-px bg-dashed border-l border-dashed border-gray-300 dark:border-zinc-800 hidden md:block" />
+
             {steps.map((step, index) => (
               <motion.div 
                 key={index}
-                className="flex flex-col group md:flex-row gap-8 md:gap-12"
+                className="flex flex-col group md:flex-row gap-8 md:gap-12 relative z-10"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ delay: 0.1, duration: 0.5 }}
               >
                 {/* Number Block */}
-                <div className="flex-shrink-0">
+                <div className="flex-shrink-0 bg-white dark:bg-zinc-900 py-2">
                    <span className="text-6xl md:text-8xl font-light text-gray-100 dark:text-zinc-800 group-hover:text-brand-100 dark:group-hover:text-brand-900/20 transition-colors font-mono block leading-none">
                       {step.number}
                     </span>

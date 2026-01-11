@@ -8,14 +8,14 @@ const TEAM_IMAGES = [
   '1500648767791-00dcc994a43e', // Andre (1)
   '1507003211169-0a1dd7228f2d', // Ari (2)
   '1573496359142-b8d87734a5a2', // Dina (3)
-  '1463453091185-61582044d556', // Hanif (4) - Moved Up
-  '1519085360753-af0119f7cbe7', // Rifqy (5) - Moved Down
+  '1463453091185-61582044d556', // Hanif (4)
+  '1519085360753-af0119f7cbe7', // Rifqy (5)
   '1506794778202-cad84cf45f1d', // Rois (6)
   '1544005313-94ddf0286df2',    // Delia (7)
   '1539571696357-5a69c17a67c6', // Thufail (8)
-  '1531427186611-ecfd6d936c79', // Hilmi (9) - Moved Up
-  '1537432376769-00f5c2f4c8d2', // Bagas (10) - Moved Down
-  '1599566150163-29194dcaad36', // Prima (11) - New Professional Image
+  '1531427186611-ecfd6d936c79', // Hilmi (9)
+  '1537432376769-00f5c2f4c8d2', // Bagas (10)
+  '1599566150163-29194dcaad36', // Prima (11)
   '1535713875002-d1d0cf377fde'  // Aziz (12)
 ];
 
@@ -77,7 +77,9 @@ export const Team: React.FC = () => {
                                 <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-gray-100 dark:bg-zinc-800 mb-6 relative shadow-md">
                                     <img 
                                     src={`https://images.unsplash.com/photo-${imageId}?q=80&w=600&h=750&auto=format&fit=crop`}
-                                    alt={`${member.name} - ${member.role}`}
+                                    alt={`${member.name} - ${member.role} at Etalas`}
+                                    width="600"
+                                    height="750"
                                     loading="lazy"
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
                                     />
@@ -86,6 +88,7 @@ export const Team: React.FC = () => {
                                         href={member.linkedin} 
                                         target="_blank" 
                                         rel="noopener noreferrer"
+                                        aria-label={`${member.name} LinkedIn Profile`}
                                         className="absolute bottom-4 right-4 p-3 bg-white dark:bg-black rounded-full shadow-lg opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 hover:text-blue-600 dark:hover:text-blue-400 dark:text-white"
                                     >
                                         <Linkedin size={20} />
@@ -136,6 +139,8 @@ export const Team: React.FC = () => {
                                     <img 
                                     src={`https://images.unsplash.com/photo-${imageId}?q=80&w=300&h=300&auto=format&fit=crop`}
                                     alt={`${member.name} - ${member.role}`}
+                                    width="300"
+                                    height="300"
                                     loading="lazy"
                                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0"
                                     />
