@@ -13,21 +13,23 @@ export const translations = {
       subtitle: 'Stop running your hotel on spreadsheets and workarounds. We build custom AI-powered systems that replace manual workflows — so your team spends more time on guests, less time on process.',
       startBuilding: 'Discuss Your Challenge',
       viewPricing: 'Our Services',
-      roi: ["Built for Hotel Operations", "AI-Native Approach", "Enterprise-Grade Delivery"],
-      trustedBy: "Trusted by hospitality enterprises"
+      roi: ["Built for Hotel Operations", "Seamless PMS/POS Integration", "Enterprise-Grade Delivery"],
+      trustedBy: "Trusted by hospitality leaders"
     },
     techStack: {
       heading: 'Trusted by Indonesia\'s leading hospitality brands',
       subheading: 'We build systems that run at enterprise scale — secure, reliable, and built for hospitality operations.',
+      integrations: 'Seamlessly Integrates With',
+      integrationList: 'Opera, Mews, Cloudbeds, Oracle POS, Xero, SAP, and custom hospitality APIs'
     },
     process: {
-      heading: 'How we transform operations',
+      heading: 'Operational excellence, by design',
       subheading: 'A structured approach designed for enterprise hospitality — from discovery to live systems that your teams actually use.',
       steps: [
         {
           title: "Discover",
-          subtitle: "Map your operational challenges",
-          description: "We start by embedding with your operations and IT teams to understand workflows, pain points, and existing systems. No assumptions — we map reality before we build anything."
+          subtitle: "Map your operational bottlenecks",
+          description: "We start by embedding with your operations and IT teams to understand workflows, pain points, and existing systems. We identify the 'hidden' manual work that slows your team down."
         },
         {
           title: "Design",
@@ -50,15 +52,49 @@ export const translations = {
       heading: 'The outcomes you gain',
       subheading: "Hospitality enterprises that work with Etalas see measurable improvements in operational efficiency and cost structure.",
       design: {
-        title: 'Faster decisions, less manual work',
-        desc: 'When your systems are connected and your data is reliable, your operations leaders make faster decisions with less back-and-forth. We eliminate the spreadsheet dependencies and disconnected tools that slow hotel teams down.'
+        title: '4 hours of manual reporting → 5 minutes',
+        desc: 'When your systems are connected and your data is reliable, operations leaders make faster decisions without chasing reports across departments. We eliminate the spreadsheet dependencies and disconnected tools that slow hotel teams down — and give them dashboards that actually reflect reality.'
       },
       operate: {
-        title: 'Systems built for how hotels actually run',
-        desc: 'We specialise exclusively in hospitality operations. That means no reinventing the wheel — we bring domain knowledge, proven patterns, and hospitality-specific thinking to every engagement.'
+        title: 'Built for how hotels run — not adapted from generic software',
+        desc: 'We specialise exclusively in hospitality. That means no learning curve charged to you — we already know what a PMS handoff looks like, how housekeeping workflows break down, and why F&B reporting is always a mess. We bring that domain knowledge to every engagement.'
       },
-      sayNo: 'Replace these with systems that work',
-      negatives: ["Manual reporting", "Disconnected systems", "Legacy software", "Repetitive data entry"]
+      sayNo: 'Things we replace:',
+      negatives: ["Spreadsheet ops reports", "WhatsApp shift handovers", "Siloed PMS & POS data", "Manual revenue reconciliation", "Disconnected guest request tracking"]
+    },
+    useCases: {
+      heading: 'Problems we solve every day',
+      subheading: 'Real challenges from hotel groups, resorts, and hospitality management companies — turned into working systems.',
+      items: [
+        {
+          label: 'Reporting',
+          problem: '4 hours daily compiling ops reports across 3 systems',
+          solution: 'Unified AI Dashboard',
+          result: 'Down to 5 minutes',
+          desc: 'Real-time consolidation across all properties — auto-surfacing anomalies before your team even notices them.'
+        },
+        {
+          label: 'Staffing',
+          problem: 'Schedules in Excel. Shift handovers on WhatsApp. Nothing connected.',
+          solution: 'AI Staff Scheduler',
+          result: '60% fewer scheduling conflicts',
+          desc: 'Auto-generated rosters based on occupancy forecasts, labour rules, and live staff availability.'
+        },
+        {
+          label: 'Guest Requests',
+          problem: 'Requests falling through the cracks between departments',
+          solution: 'Integrated Request Management',
+          result: 'Under 8-min avg response',
+          desc: 'One workflow connecting front desk, housekeeping, and F&B — with automatic escalation and SLA tracking.'
+        },
+        {
+          label: 'Revenue Reconciliation',
+          problem: '3 days every month-end reconciling PMS, POS, and OTA data manually',
+          solution: 'Automated Revenue Reconciliation',
+          result: '3 days → 2 hours',
+          desc: 'Pulls from all your systems, flags mismatches automatically, and generates signed-off reports — no human chasing.'
+        }
+      ]
     },
     pricing: {
       heading: 'Engagement Models',
@@ -234,21 +270,23 @@ export const translations = {
       subtitle: 'Berhenti mengelola hotel Anda dengan spreadsheet dan workaround. Kami membangun sistem AI custom yang menggantikan alur kerja manual — sehingga tim Anda lebih fokus pada tamu, bukan proses.',
       startBuilding: 'Diskusi Tantangan Anda',
       viewPricing: 'Layanan Kami',
-      roi: ["Dibangun untuk Operasional Hotel", "Pendekatan AI-Native", "Delivery Kelas Enterprise"],
-      trustedBy: "Dipercaya oleh perusahaan hospitality"
+      roi: ["Dibangun untuk Operasional Hotel", "Integrasi PMS/POS Mulus", "Delivery Kelas Enterprise"],
+      trustedBy: "Dipercaya oleh pemimpin hospitality"
     },
     techStack: {
       heading: 'Dipercaya oleh brand hospitality terkemuka di Indonesia',
       subheading: 'Kami membangun sistem yang berjalan di skala enterprise — aman, andal, dan dirancang untuk operasional hospitality.',
+      integrations: 'Terintegrasi Mulus Dengan',
+      integrationList: 'Opera, Mews, Cloudbeds, Oracle POS, Xero, SAP, dan API hospitality kustom'
     },
     process: {
-      heading: 'Cara kami mentransformasi operasional',
+      heading: 'Keunggulan operasional, secara terencana',
       subheading: 'Pendekatan terstruktur yang dirancang untuk hospitality enterprise — dari discovery hingga sistem live yang benar-benar digunakan tim Anda.',
       steps: [
         {
           title: "Discover",
-          subtitle: "Petakan tantangan operasional Anda",
-          description: "Kami mulai dengan memahami alur kerja, pain point, dan sistem yang ada bersama tim operasional dan IT Anda. Tanpa asumsi — kami memetakan realita sebelum membangun apapun."
+          subtitle: "Petakan hambatan operasional Anda",
+          description: "Kami mulai dengan memahami alur kerja, pain point, dan sistem yang ada bersama tim operasional dan IT Anda. Kami mengidentifikasi kerja manual 'tersembunyi' yang memperlambat tim Anda."
         },
         {
           title: "Design",
@@ -271,15 +309,49 @@ export const translations = {
       heading: 'Hasil yang Anda dapatkan',
       subheading: "Perusahaan hospitality yang bekerja dengan Etalas melihat peningkatan terukur dalam efisiensi operasional dan struktur biaya.",
       design: {
-        title: 'Keputusan lebih cepat, pekerjaan manual lebih sedikit',
-        desc: 'Ketika sistem Anda terhubung dan data Anda andal, pemimpin operasional Anda membuat keputusan lebih cepat. Kami menghilangkan ketergantungan spreadsheet dan tools yang terputus yang memperlambat tim hotel.'
+        title: '4 jam laporan manual → 5 menit',
+        desc: 'Ketika sistem Anda terhubung dan data Anda andal, pemimpin operasional membuat keputusan lebih cepat tanpa harus kejar-kejaran laporan antar departemen. Kami menghilangkan ketergantungan spreadsheet dan tools yang terputus — dan menggantinya dengan dashboard yang benar-benar mencerminkan realita operasional Anda.'
       },
       operate: {
-        title: 'Sistem yang dibangun untuk cara hotel sesungguhnya beroperasi',
-        desc: 'Kami berspesialisasi eksklusif dalam operasional hospitality. Artinya tidak perlu menemukan kembali roda — kami membawa pengetahuan domain, pola yang telah terbukti, dan pemikiran khusus hospitality ke setiap engagement.'
+        title: 'Dibangun untuk cara hotel beroperasi — bukan diadaptasi dari software generik',
+        desc: 'Kami berspesialisasi eksklusif di hospitality. Artinya tidak ada learning curve yang Anda bayar — kami sudah tahu seperti apa handoff PMS, di mana alur housekeeping breakdown, dan mengapa pelaporan F&B selalu kacau. Kami membawa pengetahuan domain itu ke setiap engagement.'
       },
-      sayNo: 'Ganti ini dengan sistem yang bekerja',
-      negatives: ["Pelaporan manual", "Sistem terputus", "Software lama", "Entri data berulang"]
+      sayNo: 'Yang kami gantikan:',
+      negatives: ["Laporan ops via spreadsheet", "Serah terima shift via WhatsApp", "Data PMS & POS yang terpisah", "Rekonsiliasi revenue manual", "Pelacakan permintaan tamu yang terputus"]
+    },
+    useCases: {
+      heading: 'Masalah yang kami selesaikan setiap hari',
+      subheading: 'Tantangan nyata dari hotel group, resort, dan perusahaan manajemen hospitality — diubah menjadi sistem yang bekerja.',
+      items: [
+        {
+          label: 'Pelaporan',
+          problem: '4 jam sehari mengompilasi laporan operasional dari 3 sistem berbeda',
+          solution: 'AI Dashboard Terpadu',
+          result: 'Turun jadi 5 menit',
+          desc: 'Konsolidasi real-time lintas properti — langsung mendeteksi anomali sebelum tim Anda menyadarinya.'
+        },
+        {
+          label: 'Jadwal Staf',
+          problem: 'Jadwal di Excel. Serah terima shift via WhatsApp. Tidak ada yang terhubung.',
+          solution: 'AI Penjadwal Staf',
+          result: '60% lebih sedikit konflik jadwal',
+          desc: 'Roster otomatis berdasarkan proyeksi okupansi, aturan ketenagakerjaan, dan ketersediaan staf real-time.'
+        },
+        {
+          label: 'Permintaan Tamu',
+          problem: 'Permintaan jatuh di antara departemen, tidak ada yang bertanggung jawab',
+          solution: 'Manajemen Permintaan Terpadu',
+          result: 'Rata-rata respons di bawah 8 menit',
+          desc: 'Satu alur kerja menghubungkan front desk, housekeeping, dan F&B — dengan eskalasi otomatis dan pelacakan SLA.'
+        },
+        {
+          label: 'Rekonsiliasi Revenue',
+          problem: '3 hari setiap akhir bulan merekonsiliasi data PMS, POS, dan OTA secara manual',
+          solution: 'Rekonsiliasi Revenue Otomatis',
+          result: '3 hari → 2 jam',
+          desc: 'Menarik data dari semua sistem, menandai ketidaksesuaian secara otomatis, dan menghasilkan laporan siap tanda tangan.'
+        }
+      ]
     },
     pricing: {
       heading: 'Model Engagement',

@@ -1,43 +1,11 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Building2 } from 'lucide-react';
-
-const caseStudies = [
-  {
-    id: 1,
-    title: "AYANA Hotel Group",
-    category: "Operational Systems · AI Integration",
-    description: "Partnered with AYANA to streamline internal operational workflows across multiple properties — reducing manual coordination and improving data visibility for operations leadership.",
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&h=450&auto=format&fit=crop",
-    tags: ["Hotel Group", "Multi-Property", "Workflow Automation"]
-  },
-  {
-    id: 2,
-    title: "Swiss-Belhotel",
-    category: "Internal Tools · System Integration",
-    description: "Built custom internal tools for Swiss-Belhotel's operational teams, connecting existing systems and reducing reliance on manual reporting processes across departments.",
-    image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800&h=450&auto=format&fit=crop",
-    tags: ["International Brand", "System Integration", "Internal Tools"]
-  },
-  {
-    id: 3,
-    title: "Hospitality Management Platform",
-    category: "Custom System Build",
-    description: "End-to-end design and development of a hospitality management platform — from staff-facing tools to management dashboards with real-time operational visibility.",
-    image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=800&h=450&auto=format&fit=crop",
-    tags: ["Platform Build", "Dashboard", "Staff Tools"]
-  },
-  {
-    id: 4,
-    title: "Operational AI Workflows",
-    category: "AI Automation",
-    description: "Deployed AI-assisted workflows for hospitality operations teams — automating repetitive reporting, surfacing anomalies in operational data, and accelerating response times.",
-    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800&h=450&auto=format&fit=crop",
-    tags: ["AI Automation", "Reporting", "Operational Intelligence"]
-  }
-];
+import { ArrowLeft, ArrowRight, Building2, ArrowRight as ArrowRightIcon } from 'lucide-react';
+import { useLanguage } from '../contexts';
 
 export const Work: React.FC = () => {
+  const { t } = useLanguage();
+  const useCases = t('useCases.items') as any[];
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -51,7 +19,7 @@ export const Work: React.FC = () => {
   return (
     <section id="work" className="py-24 bg-white dark:bg-zinc-950 transition-colors duration-300 overflow-hidden">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -61,17 +29,17 @@ export const Work: React.FC = () => {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-50 dark:bg-brand-900/30 border border-brand-100 dark:border-brand-800 text-brand-600 dark:text-brand-300 text-xs font-semibold uppercase tracking-wider mb-4">
               <Building2 size={12} />
-              <span>Hospitality Experience</span>
+              <span>Operational Depth</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-medium tracking-tight dark:text-white mb-4">
-              Enterprise clients.<br/>Real operations.
+              {t('useCases.heading')}
             </h2>
             <p className="text-lg text-gray-500 dark:text-gray-400">
-              We have worked directly with major hospitality enterprises in Indonesia — giving us the operational depth that generic agencies simply don't have.
+              {t('useCases.subheading')}
             </p>
           </motion.div>
           
-          <div className="flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-4">
             <button 
                 onClick={() => scroll('left')}
                 className="p-3 rounded-full border border-gray-200 dark:border-zinc-800 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors text-gray-900 dark:text-white"
@@ -89,51 +57,46 @@ export const Work: React.FC = () => {
           </div>
         </div>
 
-        {/* Horizontal Scroll Container */}
+        {/* Use Cases Grid / Scroll */}
         <div 
             ref={scrollRef}
             className="flex gap-8 overflow-x-auto snap-x snap-mandatory pb-12 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          {caseStudies.map((project, index) => (
-            <div key={project.id} className="min-w-[85vw] md:min-w-[45vw] lg:min-w-[35vw] snap-center">
-                <motion.div
-                  className="group cursor-default h-full rounded-2xl"
-                  whileHover={{ y: -5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                    <div className="relative overflow-hidden rounded-2xl mb-6 aspect-video shadow-sm bg-gray-100 dark:bg-zinc-800">
-                        <img 
-                        src={project.image} 
-                        alt={project.title} 
-                        width="800"
-                        height="450"
-                        loading="lazy"
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-500" />
-                        
-                        {/* Tags overlay */}
-                        <div className="absolute bottom-4 left-4 flex flex-wrap gap-2">
-                          {project.tags.map(tag => (
-                            <span key={tag} className="px-3 py-1 bg-white/90 dark:bg-black/70 backdrop-blur-sm rounded-full text-xs font-medium text-gray-800 dark:text-gray-200">
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                    </div>
-                    
-                    <div className="px-2">
-                        <div>
-                            <span className="text-xs font-mono text-brand-600 dark:text-brand-400 mb-2 block">
-                                {String(index + 1).padStart(2, '0')}
-                            </span>
-                            <h3 className="text-2xl font-bold dark:text-white mb-2 group-hover:text-brand-600 transition-colors">{project.title}</h3>
-                            <p className="text-sm text-brand-600 dark:text-brand-400 font-medium mb-3">{project.category}</p>
-                            <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{project.description}</p>
-                        </div>
-                    </div>
-                </motion.div>
+          {useCases.map((item, index) => (
+            <div key={index} className="min-w-[85vw] md:min-w-[45vw] lg:min-w-[30vw] snap-center">
+              <motion.div
+                className="group p-8 rounded-3xl bg-gray-50 dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 hover:border-brand-500/30 transition-all duration-500 h-full flex flex-col"
+              >
+                <div className="flex justify-between items-start mb-12">
+                  <span className="px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-300 text-[10px] font-bold uppercase tracking-widest">
+                    {item.label}
+                  </span>
+                  <div className="text-right">
+                    <div className="text-[10px] text-gray-400 mb-1 font-bold uppercase tracking-widest">Impact</div>
+                    <div className="text-lg font-bold text-brand-600 italic leading-none">{item.result}</div>
+                  </div>
+                </div>
+
+                <div className="mb-8 flex-grow">
+                  <div className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-3">The Challenge</div>
+                  <p className="text-lg text-etalas-text dark:text-white font-medium leading-snug">
+                    "{item.problem}"
+                  </p>
+                </div>
+
+                <div className="pt-8 border-t border-gray-200 dark:border-zinc-800">
+                  <div className="text-[10px] font-bold text-brand-600 uppercase tracking-[0.2em] mb-3">Our Solution</div>
+                  <h3 className="text-xl font-bold mb-3 dark:text-white">{item.solution}</h3>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-6">
+                    {item.desc}
+                  </p>
+                  <a href="#contact" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-600 group/link">
+                    Explore This Use Case
+                    <ArrowRightIcon size={14} className="transition-transform group-hover/link:translate-x-1" />
+                  </a>
+                </div>
+              </motion.div>
             </div>
           ))}
         </div>
@@ -154,7 +117,7 @@ export const Work: React.FC = () => {
           ].map((stat, i) => (
             <div key={i} className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-brand-600 dark:text-brand-400 mb-1">{stat.value}</div>
-              <div className="text-sm text-gray-500 dark:text-gray-400">{stat.label}</div>
+              <div className="text-sm text-gray-500 dark:text-gray-400 font-medium">{stat.label}</div>
             </div>
           ))}
         </motion.div>
