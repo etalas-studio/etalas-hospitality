@@ -9,8 +9,8 @@ export const translations = {
     },
     hero: {
       tag: 'Hospitality Specialist Software House',
-      titleStart: 'Operational efficiency for hospitality enterprises, powered by',
-      subtitle: 'We help hotel groups, resorts, and hospitality management companies replace manual processes with reliable systems — combining product thinking, AI, and software development.',
+      titleStart: 'Great hotels run on',
+      subtitle: 'Stop running your hotel on spreadsheets and workarounds. We build custom AI-powered systems that replace manual workflows — so your team spends more time on guests, less time on process.',
       startBuilding: 'Discuss Your Challenge',
       viewPricing: 'Our Services',
       roi: ["Built for Hotel Operations", "AI-Native Approach", "Enterprise-Grade Delivery"],
@@ -230,8 +230,8 @@ export const translations = {
     },
     hero: {
       tag: 'Software House Spesialis Hospitality',
-      titleStart: 'Efisiensi operasional untuk perusahaan hospitality, didukung oleh',
-      subtitle: 'Kami membantu hotel group, resort, dan perusahaan manajemen hospitality menggantikan proses manual dengan sistem yang andal — menggabungkan product thinking, AI, dan pengembangan software.',
+      titleStart: 'Hotel terbaik berjalan dengan',
+      subtitle: 'Berhenti mengelola hotel Anda dengan spreadsheet dan workaround. Kami membangun sistem AI custom yang menggantikan alur kerja manual — sehingga tim Anda lebih fokus pada tamu, bukan proses.',
       startBuilding: 'Diskusi Tantangan Anda',
       viewPricing: 'Layanan Kami',
       roi: ["Dibangun untuk Operasional Hotel", "Pendekatan AI-Native", "Delivery Kelas Enterprise"],
