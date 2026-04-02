@@ -2,7 +2,6 @@ import React, { useEffect, useState, Suspense, lazy } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Preloader } from './components/Preloader';
-import { CustomCursor } from './components/CustomCursor';
 import { BackgroundBlobs } from './components/BackgroundBlobs';
 import { LanguageProvider, ThemeProvider } from './contexts';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -126,7 +125,6 @@ function AppContent() {
 
   return (
     <>
-      <CustomCursor />
       <AnimatePresence mode="wait">
         {loading && <Preloader onComplete={() => setLoading(false)} />}
       </AnimatePresence>

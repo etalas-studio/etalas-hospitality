@@ -4,19 +4,19 @@ import { useLanguage } from '../contexts';
 import { Linkedin } from 'lucide-react';
 
 const TEAM_IMAGES = [
-  '1472099645785-5658abf4ff4e', // Pandu (0)
-  '1500648767791-00dcc994a43e', // Andre (1)
-  '1507003211169-0a1dd7228f2d', // Ari (2)
-  '1573496359142-b8d87734a5a2', // Dina (3)
-  '1463453091185-61582044d556', // Hanif (4)
-  '1519085360753-af0119f7cbe7', // Rifqy (5)
-  '1506794778202-cad84cf45f1d', // Rois (6)
-  '1544005313-94ddf0286df2',    // Delia (7)
-  '1539571696357-5a69c17a67c6', // Thufail (8)
-  '1531427186611-ecfd6d936c79', // Hilmi (9)
-  '1537432376769-00f5c2f4c8d2', // Bagas (10)
-  '1599566150163-29194dcaad36', // Prima (11)
-  '1535713875002-d1d0cf377fde'  // Aziz (12)
+  '/pandu-avatar.png',    // Pandu (0)
+  '/andre-avatar.png',    // Andre (1)
+  '/ari-avatar.png',      // Ari (2)
+  '/dina-avatar.jpg',     // Dina (3)
+  '/hanif-avatar.png',    // Hanif (4)
+  '/rifky-avatar.png',    // Rifqy (5)
+  '/rois-avatar.png',     // Rois (6)
+  '/delia-avatar.png',    // Delia (7)
+  '/thufail-avatar.png',  // Thufail (8)
+  '/hilmi-avatar.png',    // Hilmi (9)
+  '/bagas-avatar.jpeg',   // Bagas (10)
+  '/prima-avatar.png',    // Prima (11)
+  '/azis-avatar.png'      // Aziz (12)
 ];
 
 export const Team: React.FC = () => {
@@ -76,12 +76,12 @@ export const Team: React.FC = () => {
                             >
                                 <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-gray-100 dark:bg-zinc-800 mb-6 relative shadow-md">
                                     <img 
-                                    src={`https://images.unsplash.com/photo-${imageId}?q=80&w=600&h=750&auto=format&fit=crop`}
+                                    src={imageId}
                                     alt={`${member.name} - ${member.role} at Etalas`}
                                     width="600"
                                     height="750"
                                     loading="lazy"
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                     />
                                     {member.linkedin && (
                                     <a 
@@ -137,12 +137,12 @@ export const Team: React.FC = () => {
                             >
                                 <div className="aspect-square overflow-hidden rounded-xl bg-gray-100 dark:bg-zinc-800 mb-4 relative">
                                     <img 
-                                    src={`https://images.unsplash.com/photo-${imageId}?q=80&w=300&h=300&auto=format&fit=crop`}
+                                    src={imageId}
                                     alt={`${member.name} - ${member.role}`}
                                     width="300"
                                     height="300"
                                     loading="lazy"
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                     />
                                 </div>
                                 <h3 className="text-sm font-bold dark:text-white leading-tight mb-1">{member.name}</h3>

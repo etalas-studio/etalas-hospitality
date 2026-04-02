@@ -72,10 +72,19 @@ export const Header: React.FC<HeaderProps> = ({ currentView, onNavigate }) => {
           <a 
             href="#" 
             onClick={(e) => { e.preventDefault(); onNavigate('home'); window.scrollTo({top:0, behavior:'smooth'}); }}
-            className="text-2xl font-bold tracking-tight relative z-50 group text-etalas-text dark:text-white" 
+            className="relative z-50 group" 
             aria-label="Etalas Home"
           >
-            etalas<span className="text-brand-600 transition-colors group-hover:text-black dark:group-hover:text-white">.</span>
+            <img 
+              src="/etalas-logo.png" 
+              alt="Etalas" 
+              className="h-8 dark:hidden"
+            />
+            <img 
+              src="/etalas-white.png" 
+              alt="Etalas" 
+              className="h-8 hidden dark:block"
+            />
           </a>
 
           {/* Desktop Nav */}

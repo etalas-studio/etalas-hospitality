@@ -34,8 +34,12 @@ export const Footer: React.FC = () => {
         <div className="container mx-auto relative z-10">
           <div className="flex flex-col lg:flex-row justify-between items-start mb-24 gap-12">
             <div>
-               <a href="#" className="text-3xl font-bold tracking-tight mb-8 block group text-white" aria-label="Back to top">
-                etalas<span className="text-gray-600 group-hover:text-brand-500 transition-colors">.</span>
+               <a href="#" className="mb-8 block group" aria-label="Back to top">
+                <img 
+                  src="/etalas-white.png" 
+                  alt="Etalas" 
+                  className="h-10"
+                />
               </a>
               <p className="max-w-xs text-gray-400">
                   {t('footer.tagline')}
@@ -87,15 +91,7 @@ export const Footer: React.FC = () => {
               >
                 <Linkedin size={20} />
               </motion.a>
-              <motion.a 
-                href="#" 
-                aria-label="Visit Etalas on Twitter"
-                className="p-3 border border-gray-800 rounded-full hover:bg-white hover:text-black hover:border-white text-white"
-                whileHover={{ scale: 1.1, y: -2 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <Twitter size={20} />
-              </motion.a>
+              
               <motion.a 
                 href="https://www.instagram.com/etalas.id/" 
                 target="_blank"
@@ -111,14 +107,7 @@ export const Footer: React.FC = () => {
           </div>
           
           <div className="mt-24">
-             <div className="w-full overflow-hidden">
-               <motion.div 
-                 style={{ x }}
-                 className="text-[12rem] md:text-[18rem] font-bold leading-none text-white/5 opacity-50 select-none whitespace-nowrap hover:text-brand-900/20 transition-colors duration-1000 cursor-default"
-               >
-                 etalas
-               </motion.div>
-             </div>
+             
           </div>
         </div>
       </footer>
