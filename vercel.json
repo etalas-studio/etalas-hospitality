@@ -2,11 +2,15 @@
   "rewrites": [
     {
       "source": "/ingest/static/:path*",
-      "destination": "https://app.posthog.com/static/:path*"
+      "destination": "https://us.i.posthog.com/static/:path*"
     },
     {
       "source": "/ingest/:path*",
-      "destination": "https://app.posthog.com/:path*"
+      "destination": "https://us.i.posthog.com/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
